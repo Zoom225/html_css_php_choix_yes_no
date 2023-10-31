@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/style.js"></script>
+</head>
+<body>
+    <h1>Bases de données MySQL</h1>  
+        <?php
+            $servername = 'localhost';
+            $username = 'root';
+            $password = 'root';
+            
+            //On établit la connexion
+            $conn = new mysqli($servername, $username, $password);
+            
+            //On vérifie la connexion
+            if($conn->connect_error){
+                die('Erreur : ' .$conn->connect_error);
+            }
+            echo 'Connexion réussie';
+        ?>
+    
+    <form onsubmit="return validateForm()">
+		<label for="question">Do you like this survey form?</label><br>
+		<input type="radio" id="yes" name="question" value="yes" onclick="showProgressBar(this)" required>
+		<label for="yes">Yes</label>
+		<div class="progress-bar"><span></span></div><br>
+		<input type="radio" id="no" name="question" value="no" onclick="showProgressBar(this)">
+		<label for="no">No</label>
+		<div class="progress-bar"><span></span></div><br>
+
+		<input type="submit" value="Submit">
+	</form>
+
+	<div class="progress-bar">
+		<span></span>
+	</div>
+</body>
+</html>
